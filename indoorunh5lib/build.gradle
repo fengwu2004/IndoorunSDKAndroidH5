@@ -1,0 +1,47 @@
+apply plugin: 'com.android.library'
+apply plugin: 'com.novoda.bintray-release'
+publish {
+    userOrg = 'betatobunny'
+    groupId = 'com.yellfun'
+    uploadName = 'indoorunh5'
+    artifactId = 'indoorunh5'
+    publishVersion = '1.0.0'
+    desc = 'a ibeacon location system use H5 in webview'
+    website = 'https://github.com/YellFunGit/IndoorunSDKAndroidH5'
+    licences = ['Apache-2.0']
+}
+android {
+    compileSdkVersion 26
+    defaultConfig {
+        minSdkVersion 18
+        targetSdkVersion 26
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation 'com.android.support:appcompat-v7:26.1.0'
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'com.android.support.test:runner:1.0.2'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+    compile 'org.altbeacon:android-beacon-library:2.9.1'
+    compile 'com.squareup.retrofit2:retrofit:2.0.2'
+    compile 'com.squareup.retrofit2:converter-gson:2.0.2'
+    compile 'com.squareup.okhttp3:okhttp:3.1.2'
+}
+tasks.withType(JavaCompile) {
+    options.encoding = "utf-8"
+}
+tasks.withType(Javadoc) {
+    options.addStringOption('Xdoclint:none', '-quiet')
+    options.addStringOption('encoding', 'UTF-8')
+    options.addStringOption('bootclasspath ', 'C:/Users/ky/AppData/Local/Android/Sdk/platforms/android-26/android.jar')
+}
